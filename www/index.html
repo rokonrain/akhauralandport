@@ -1,0 +1,737 @@
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Daily Statement</title>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                </head>
+                <style>
+                /* Reset some default browser styles */
+                * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                }
+
+                /* Set a background color and font for the body */
+                body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                }
+
+                /* Style the container */
+                .container {
+                background: rgba(255, 255, 255, 0.15);
+                border-radius: 10px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                padding: 10px;
+                text-align: center;
+                width: 90%;
+                max-width: 400px;
+                z-index: 9;
+                margin-top: 35%;
+                position: relative;
+                }
+
+                /* Style the heading */
+                h1 {
+                margin-bottom: 2px;
+                color: #333;
+                font-size: 1.5rem; 
+                }
+
+                /* Style the date and time */
+                #dateTime {
+                margin-bottom: 10px;
+                margin-top: 10px;
+                color: #666;
+                font-size: 1rem;
+                }
+
+                /* Style the input fields */
+                input {
+                display: block;
+                margin: 10px auto;
+                padding: 10px 15px;
+                width: calc(80% - 30px);
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 1rem;
+                box-sizing: border-box;
+                text-align: right;
+                }
+
+                /* Style the buttons */
+                button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #007bff;
+                color: white;
+                font-size: 1rem;
+                cursor: pointer;
+                width: calc(100% - 2px);
+                max-width: 200px;
+                }
+
+                button:hover {
+                background-color: #8000ff;
+                }
+
+                /* Style the result table */
+                table {
+                margin-top: 15px;
+                width: 100%;
+                border-collapse: collapse;
+                }
+
+                table, th, td {
+                border: 1px solid #0a0909;
+                }
+
+                th {
+                width: 45%;
+                padding: 10px;
+                text-align: left;
+                }
+
+                td {
+                width: 55%;
+                padding: 10px;
+                text-align: right;
+                }
+                th {
+                background-color: #f2f2f2;
+                }
+
+                /* Container for share buttons */
+                #shareButtons {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+                }
+
+                /* Styling the WhatsApp share button */
+                #shareWhatsApp {
+                padding: 10px 15px;
+                font-size: 0.875rem;
+                border-radius: 5px;
+                cursor: pointer;
+                background-color: #25d366;
+                color: white;
+                align-items: center;
+                }
+
+                #shareWhatsApp i {
+                margin-right: 8px;
+                }
+                /* WhatsApp share button hover effect */
+                #shareWhatsApp:hover {
+                background-color: #1ebea5;
+                }
+
+                /* Flying bird effect */
+                .bird {
+                background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/174479/bird-cells-new.svg');
+                filter: invert(34%) sepia(55%) saturate(427%) hue-rotate(141deg) brightness(93%) contrast(91%);
+                background-size: auto 100%;
+                width: 88px;
+                height: 125px;
+                will-change: background-position;
+                animation-name: fly-cycle;
+                animation-timing-function: steps(10);
+                animation-iteration-count: infinite;
+                }
+
+                .bird-one {
+                animation-duration: 1s;
+                animation-delay: -0.5s;
+                }
+
+                .bird-two {
+                animation-duration: 0.9s;
+                animation-delay: -0.75s;
+                }
+
+                .bird-three {
+                animation-duration: 1.25s;
+                animation-delay: -0.25s;
+                }
+
+                .bird-four {
+                animation-duration: 1.1s;
+                animation-delay: -0.5s;
+                }
+
+                .bird-container {
+                position: absolute;
+                top: 10%;
+                left: -3%;
+                transform: scale(0) translateX(-10vw);
+                will-change: transform;
+                animation-name: fly-right-one;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                }
+
+                .bird-container-one {
+                animation-duration: 15s;
+                animation-delay: 0;
+                }
+
+                .bird-container-two {
+                animation-duration: 16s;
+                animation-delay: 1s;
+                }
+
+                .bird-container-three {
+                animation-duration: 14.6s;
+                animation-delay: 9.5s;
+                }
+
+                .bird-container-four {
+                animation-duration: 16s;
+                animation-delay: 10.25s;
+                }
+
+                @keyframes fly-cycle {
+                100% {
+                background-position: -900px 0;
+                }
+                }
+
+                @keyframes fly-right-one {
+                0% {
+                transform: scale(0.3) translateX(-10vw);
+                }
+                10% {
+                transform: translateY(2vh) translateX(10vw) scale(0.4);
+                }
+                20% {
+                transform: translateY(0vh) translateX(30vw) scale(0.5);
+                }
+                30% {
+                transform: translateY(4vh) translateX(50vw) scale(0.6);
+                }
+                40% {
+                transform: translateY(2vh) translateX(70vw) scale(0.6);
+                }
+                50% {
+                transform: translateY(0vh) translateX(90vw) scale(0.6);
+                }
+                60% {
+                transform: translateY(0vh) translateX(110vw) scale(0.6);
+                }
+                100% {
+                transform: translateY(0vh) translateX(110vw) scale(0.6);
+                }
+                }
+
+                @keyframes fly-right-two {
+                0% {
+                transform: translateY(-2vh) translateX(-10vw) scale(0.5);
+                }
+                10% {
+                transform: translateY(0vh) translateX(10vw) scale(0.4);
+                }
+                20% {
+                transform: translateY(-4vh) translateX(30vw) scale(0.6);
+                }
+                30% {
+                transform: translateY(1vh) translateX(50vw) scale(0.45);
+                }
+                40% {
+                transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
+                }
+                50% {
+                transform: translateY(0vh) translateX(90vw) scale(0.45);
+                }
+                51% {
+                transform: translateY(0vh) translateX(110vw) scale(0.45);
+                }
+                100% {
+                transform: translateY(0vh) translateX(110vw) scale(0.45);
+                }
+                }
+
+                /* Popup */
+                #popup {
+                display: none;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(255, 255, 255, 0.5);
+                padding: 20px;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                border-radius: 15px;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                }
+
+                /* Placeholder */
+                .input-container {
+                position: relative;
+                width: 200px;
+                margin: auto;
+                }
+
+                .input-container input {
+                width: 100%;
+                padding: 10px;
+                }
+
+                .input-container::before {
+                content: attr(data-placeholder);
+                position: absolute;
+                left: 10px;
+                top: 10px;
+                color: #999;
+                pointer-events: none;
+                transition: all 0.2s;
+                text-align: right;
+                }
+
+                .input-container input:focus::before,
+                .input-container input:not(:placeholder-shown)::before {
+                transform: translateY(-20px);
+                font-size: 0.75rem;
+                color: #666;
+                }
+
+                /* Logo rotate */
+                .logo {
+                display: flex;
+                width: 53px;
+                height: 53px;
+                cursor: pointer; /* Change cursor to pointer to indicate clickability */
+                }
+
+                .rotate {
+                    animation: rotate 60s linear infinite;
+                }
+
+                @keyframes rotate {
+                from {
+                transform: rotate(0deg);
+                }
+                to {
+                transform: rotate(360deg);
+                }
+                }
+
+                /* Waves */
+                .header {
+                position: relative;
+                text-align: center;
+                background: linear-gradient(109.6deg, rgba(156, 252, 248, 1) 11.2%, rgba(110, 123, 251, 1) 91.1%);
+                }
+
+                .inner-header {
+                height: 83vh;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                }
+
+                .flex {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                }
+
+                .waves {
+                position: relative;
+                width: 100%;
+                height: 15vh;
+                margin-bottom: -7px;
+                min-height: 100px;
+                max-height: 150px;
+                }
+
+                .parallax > use {
+                animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+                }
+
+                .parallax > use:nth-child(1) {
+                animation-delay: -2s;
+                animation-duration: 7s;
+                }
+
+                .parallax > use:nth-child(2) {
+                animation-delay: -3s;
+                animation-duration: 10s;
+                }
+
+                .parallax > use:nth-child(3) {
+                animation-delay: -4s;
+                animation-duration: 13s;
+                }
+
+                .parallax > use:nth-child(4) {
+                animation-delay: -5s;
+                animation-duration: 20s;
+                }
+
+                @keyframes move-forever {
+                0% {
+                transform: translate3d(-90px, 0, 0);
+                }
+                100% {
+                transform: translate3d(85px, 0, 0);
+                }
+                }
+
+                /* Shrinking for mobile */
+                @media (max-width: 400px) {
+                .waves {
+                height: 40px;
+                min-height: 40px;
+                }
+                .content {
+                height: 30vh;
+                }
+                h1 {
+                font-size: 1.50rem;
+                }
+                #dateTime {
+                font-size: 0.875rem;
+                }
+                input {
+                width: calc(90% - 30px);
+                }
+                button {
+                width: 100%;
+                max-width: 200px;
+                }
+
+                }
+                .container-content{
+                margin-top: -13%;
+                }
+
+                /* Fullscreen table styles */
+                .fullscreen {
+                position: fixed;
+                margin-top: -0.01%;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: white;
+                z-index: 1000;
+                font-weight: bold;
+                padding: 10px;
+                font-size: 1.2em; /* Increase font size in fullscreen mode */
+                }
+
+                #resultTable:active {
+                animation-name: jiggle;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+                }
+
+                @keyframes jiggle {
+                1% {
+                transform: translate(0px, 0px) rotate(0deg);
+                }
+                5% {
+                transform: translate(1px, -1px) rotate(-1deg);
+                }
+                10% {
+                transform: translate(2px, -2px) rotate(0deg);
+                }
+                15% {
+                transform: translate(3px, -3px) rotate(1deg);
+                }
+                20% {
+                transform: translate(2px, -2px) rotate(0deg);
+                }
+                25% {
+                transform: translate(1px, -1px) rotate(-1deg);
+                }
+                30% {
+                transform: translate(0px, 0px) rotate(0deg);
+                }
+                35% {
+                transform: translate(-1px, 1px) rotate(1deg);
+                }
+                40% {
+                transform: translate(-2px, 2px) rotate(0deg);
+                }
+                45% {
+                transform: translate(-3px, 3px) rotate(-1deg);
+                }
+                50% {
+                transform: translate(-2px, 2px) rotate(1deg);
+                }
+                55% {
+                transform: translate(-1px, 1px) rotate(1deg);
+                }
+                60% {
+                transform: translate(0px, 0px) rotate(0deg);
+                }
+                }
+                </style>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <body>
+
+                <!--Hey! This is the original version
+                of Simple CSS Waves-->
+
+                <div class="header">
+                <!--Content before waves-->
+                <div class="inner-header flex"> 
+                <div id="popup"><p align="center">Develop & Design By <br>Rokonuzzaman Abedin <br> Email: rokonrain@gmail.com<br> Contact:+8801818640515</p> </div>
+                <div class="bird-container bird-container-one">
+                    <div class="bird bird-one"></div>
+                </div>        
+                <div class="bird-container bird-container-two">
+                <div class="bird bird-two"></div>
+                </div>  
+                <div class="bird-container bird-container-three">
+                    <div class="bird bird-three"></div>
+                </div> 
+                <div class="bird-container bird-container-four">
+                    <div class="bird bird-four"></div>
+                </div>
+                <div class="container">
+
+                    <img src="./img/blpa_logo.png" class="logo" alt="logo" id="logo" onclick="toggleRotation()"/>
+                <div class="container-content">   
+                    <h1 onClick="refreshPage()">Akhaura Land Port</h1>
+                    <p >Daily Statement</p>
+
+                    
+                <p id="dateTime"></p> <!-- New element for date and time -->
+                <div class="input-container" data-placeholder="Small Trucks" style="text-align: right;">   
+                    <input type="number" id="input2" placeholder="">
+                </div>
+                <div class="input-container" data-placeholder="Big Trucks" style="text-align: right;">
+                    <input type="number" id="input1" placeholder="">
+                    </div>
+                <div class="input-container" data-placeholder="Haltage Days" style="text-align: right;">   
+                    <input type="number" id="input3" placeholder="">
+                    <button id="calculateButton">Calculate</button>
+                </div>
+                </div>
+
+                    
+                    
+                <table id="resultTable" style="display: none;">
+                    <tr><th>Total Trucks</th><td id="totaltruck" style="text-align: center;"></td></tr>
+                    <tr><th>Entry Fees</th><td id="entryfee"></td></tr>
+                    <tr><th>Wgt. Charges</th><td id="weightfee"></td></tr>
+                    <tr id="haltageRow"><th>Haltage Fees</th><td id="haltagefee"></td></tr>
+                    <tr><th>Port Charges</th><td id="portcharge"></td></tr>
+                    <tr><th>VAT</th><td id="vat" ></td></tr>
+                    <tr><th>Total Revenue</th><td id="revenue"></td></tr>
+                </table>
+                <div id="shareButtons" style="display: none;"> <!-- Sharing buttons are initially hidden -->
+                    <button id="shareWhatsApp"> <i class="fab fa-whatsapp"></i>Share on WhatsApp</button> <!-- WhatsApp sharing button -->
+                </div>
+                </div>
+                </div>
+                <!--Waves Container-->
+                <div>
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+                </svg>
+                </div>
+                <!--Waves end-->
+
+                </div>
+                <!--Header ends-->
+
+                <!-- Add an audio element for the ding sound -->
+                <audio id="dingSound" src="./img/ding.mp3"></audio>
+                <script>
+                //popup
+                $(document).ready(function() {
+                    // Check if the popup has been shown before
+                    if (!localStorage.getItem('popupShown')) {
+                        // Show the popup
+                        $('#popup').fadeIn();
+                        
+                        // Hide the popup after 2 seconds
+                        setTimeout(function() {
+                            $('#popup').fadeOut();
+                        }, 7000);
+                        
+                        // Mark the popup as shown in localStorage
+                        localStorage.setItem('popupShown', 'true');
+                    }
+                });
+                // Function to format date and time
+                function formatDateTime() {
+                    const now = new Date();
+                    const options = {
+                        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+                        hour: '2-digit', minute: '2-digit', second: '2-digit'
+                    };
+                    return now.toLocaleDateString('en-US', options);
+                }
+
+                // Display the current date and time
+                document.getElementById('dateTime').innerText = formatDateTime();
+
+                // Function to round numbers up to two decimal places
+                function roundUpToTwoDecimalPlaces(number) {
+                    return Math.round(number * 100) / 100; 
+                }
+
+                document.getElementById('calculateButton').addEventListener('click', function() {
+                    // Get the values from the input fields
+                    const input1 = document.getElementById('input1').value;
+                    const input2 = document.getElementById('input2').value;
+                    const input3 = document.getElementById('input3').value;
+
+                    // Check if all inputs are filled
+                    if (input1 && input2 && input3) {
+                        // Convert the inputs to numbers
+                        const num1 = parseInt(input1);
+                        const num2 = parseInt(input2);
+                        const num3 = parseInt(input3);
+
+                        // Perform the calculation (for example, summing the inputs)
+                        const result = num1 + num2;
+                        const formattedSmall = roundUpToTwoDecimalPlaces(num2 * 69.69);
+                        const formattedBig = roundUpToTwoDecimalPlaces(num1 * 139.30);
+                        const formattedEntryfee = roundUpToTwoDecimalPlaces(formattedBig + formattedSmall);
+                        const formattedWeightfee = roundUpToTwoDecimalPlaces(result * 139.38);
+                        const formattedHoltagefee = roundUpToTwoDecimalPlaces(num3 * 181.11);
+                        const formattedPortcharge = roundUpToTwoDecimalPlaces(formattedEntryfee + formattedHoltagefee + formattedWeightfee);
+                        const formattedVat = roundUpToTwoDecimalPlaces(formattedPortcharge * 0.15);
+                        const formattedRevenue = roundUpToTwoDecimalPlaces(formattedPortcharge + formattedVat);
+
+                        // Display the results in the table
+                        
+                        
+                        document.getElementById('weightfee').innerText = `${formattedWeightfee}/-`;
+                        document.getElementById('portcharge').innerText = `${formattedPortcharge}/-`;
+                        document.getElementById('vat').innerText = `${formattedVat}/-`;
+                        document.getElementById('revenue').innerText = `${formattedRevenue}/-`;
+
+                        // Show the table and share buttons
+                        document.getElementById('resultTable').style.display = 'table';
+                        document.getElementById('shareButtons').style.display = 'block';
+                        
+
+                        // Hide or show the Haltage Fees row based on num3 value
+                        if (num3 === 0) {
+                            document.getElementById('haltageRow').style.display = 'none';
+                        } else {
+                            document.getElementById('haltageRow').style.display = 'table-row';
+                            document.getElementById('haltagefee').innerText = `${formattedHoltagefee}/-`;
+                        }
+
+                             // Hide or show the small trucks and fees based on num2 value 
+                             if (num2 === 0 && num1 > 0) {
+                            document.getElementById('totaltruck').innerText = `${num1} Big = ${result} Trucks`;
+                            document.getElementById('entryfee').innerText = `${formattedBig} = ${formattedEntryfee}/-`;
+                        } 
+                            // Hide or show the big trucks and fees based on num2 value
+                           else if (num1 === 0 && num2 > 0) {
+                            document.getElementById('totaltruck').innerText = `${num2} Small = ${result} Trucks`;
+                            document.getElementById('entryfee').innerText = `${formattedSmall} = ${formattedEntryfee}/-`;
+                        } else {
+                            document.getElementById('totaltruck').innerText = `${num2}Small+${num1}Big=${result}Trucks`;
+                            document.getElementById('entryfee').innerText = `${formattedSmall}+${formattedBig}=${formattedEntryfee}/-`;
+                        }
+
+                        // Add event listener for sharing on WhatsApp
+                        document.getElementById('shareWhatsApp').onclick = function() {
+
+                            const url = `https://api.whatsapp.com/send?text=Total Trucks: ${num2} Small %2B ${num1} Big = ${result}, Haltage Days = ${num3}, Total Revenue: ${formattedRevenue}/-`;
+                            window.open(url, '_blank');
+                        // Your Discord webhook URL
+                    const webhookURL = 'https://discord.com/api/webhooks/1253068271478112307/gRAoeXTnPFe8Zs7EKvxQT3p5qYzp4xCsJXKGeJMffWn6pVvjBP4REaJbXlDBRvB-BvrT';
+
+                    const table = document.getElementById('resultTable');
+
+                // Construct table header
+                let resultData = "```Daily Statement By Rokonuzzaman Abedin\n\n";
+                resultData += "-----------------------------------------\n";
+                resultData += "| Description      | Value              |\n";
+                resultData += "-----------------------------------------\n";
+
+                // Construct table rows
+                for (let row of table.rows) {
+                const cells = row.cells;
+                let description = cells[0].innerText.padEnd(16, ' ');
+                let value = cells[1].innerText.padEnd(18, ' ');
+                resultData += `| ${description} | ${value} |\n`;
+                }
+
+                // End of table
+                resultData += "-----------------------------------------\n";
+                resultData += "```";
+
+                const message = {
+                content: resultData
+                };
+
+                fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(message)
+                }).then(response => {
+                if (response.ok) {
+                console.log('Message sent to Discord');
+                } else {
+                console.error('Error sending message to Discord');
+                }
+                }).catch(error => {
+                console.error('Error:', error);
+                });
+                };
+                    } else {
+                        // Display an error message if any input is missing
+                        alert('Please enter all numbers');
+                        document.getElementById('resultTable').style.display = 'none';
+                        document.getElementById('shareButtons').style.display = 'none';
+                    }
+
+                });
+                // scroll off //
+                document.addEventListener('touchmove', function(event) {
+                event.preventDefault();
+                }, { passive: false });
+
+                // toggle logo //
+                function toggleRotation() {
+                const logo = document.getElementById('logo');
+                logo.classList.toggle('rotate');
+                }
+
+                // table fullscreen //
+                document.getElementById('resultTable').addEventListener('click', function() {
+                this.classList.toggle('fullscreen');
+                document.getElementById('dingSound').play();
+                });
+
+                function refreshPage(){
+                window.location.reload();
+                } 
+                </script>
+                </body>
+                </html>
