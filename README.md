@@ -1,2 +1,0 @@
-# akhauralandport
-Akahura Land Port
